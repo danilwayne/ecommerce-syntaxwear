@@ -27,6 +27,7 @@ dd {
 ul[role="list"],
 ol[role="list"] {
 	list-style: none;
+
 }
 
 /* Set core root defaults */
@@ -53,6 +54,8 @@ a {
 ul,
 ol {
 	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 /* Make images easier to work with */
