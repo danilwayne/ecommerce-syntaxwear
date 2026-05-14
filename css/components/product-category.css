@@ -2,21 +2,23 @@
 .categories-section {
 	padding-top: 40px;
 	padding-bottom: 40px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+	/* Desktop: mantém 4 cards por linha, como na referência. */
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 	gap: 30px;
 }
 
 .category-card {
 	position: relative;
-	width: 317px;
-	height: 500px;
+	width: 100%;
+	/* Faz o card crescer/reduzir sem quebrar a proporção da arte. */
+	aspect-ratio: 317 / 500;
+	min-height: 380px;
 	border-radius: 15px;
 	overflow: hidden;
 }
 
-.overlay{
+.overlay {
 	position: absolute;
 	inset: 0;
 	background-color: rgba(0, 0, 0, 0.25);
@@ -46,13 +48,30 @@
 	background: url(../../images/products/moderno.jpg) no-repeat center;
 	background-size: cover;
 }
-	
+
 .futurista {
 	background: url(../../images/products/futurista.jpg) no-repeat center;
 	background-size: cover;
 }
+
+@media (max-width: 1024px) {
+	.categories-section {
+		/* Tablet: passa de 4 para 2 colunas. */
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
 @media (max-width:768px) {
+	.categories-section {
+		/* Mobile: empilha em 1 coluna. */
+		grid-template-columns: 1fr;
+	}
+
 	.category-card {
 		width: 100%;
+		/* No mobile, altura fixa para preservar legibilidade do botão. */
+		aspect-ratio: auto;
+		height: 500px;
+		min-height: 0;
 	}
 }
